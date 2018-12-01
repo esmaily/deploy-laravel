@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('fileManager::layouts')
 
 @section('content')
     <div id="page-title">
-        <span class="title">ویرایش{{last(explode('/',$file)) }}- <a href="{{ route('file.index') }}"> » بازگشت </a></span>
+        <span class="title">ویرایش{{last(explode('/',$file)) }}- <a href="{{ route('fileManager.index') }}"> » بازگشت </a></span>
         <div style="text-align: right; margin-top: 10px;">
         </div>
     </div>
     <div class="imgeviewer">
-        <form action="{{ route('file.update') }}" method="post" target="_self">
+        <form action="{{ route('fileManager.update') }}" method="post" target="_self">
             @csrf
             @method('PUT')
             <input type = "hidden" name="file" value="{{ $file }}">

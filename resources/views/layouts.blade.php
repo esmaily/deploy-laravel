@@ -76,7 +76,7 @@
                             </button>
                         </div>
                     </div>
-                    <input  type="text" name="directory" class="form-control" value="{{ $path }}" id="directoryBrowse"
+                    <input  type="text" name="directory" class="form-control" value="{{ $path?? '/' }}" id="directoryBrowse"
                            placeholder="root">
                     <div class="input-group-prepend float-right">
                         <div class="input-group-text p-0">

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
  */
 class FileController extends Controller
 {
+
     //
     /**
      * @param Request $request
@@ -89,9 +90,9 @@ class FileController extends Controller
      */
     public function show($name, $path = '')
     {
-        $file = rep($this->root, 'public', '/storage') . trim(rep($path, '\\', '/'), ' ') . '/' . $name;
+        $file = rep(root(), 'public', '/storage') . trim(rep($path, '\\', '/'), ' ') . '/' . $name;
 
-        return view('file.show', ['file' => $file]);
+        return view('fileManager::file.show', ['file' => $file]);
     }
 
     /**
@@ -101,10 +102,10 @@ class FileController extends Controller
      */
     public function edit($name, $path = '')
     {
-        $file = $this->root . trim(rep($path, '\\', '/'), ' ') . '/' . $name;
+        $file = root() . trim(rep($path, '\\', '/'), ' ') . '/' . $name;
         $content = Storage::get($file);
 
-        return view('file.edit', ['content' => $content, 'file' => $file]);
+        return view('fileManager::file.edit', ['content' => $content, 'file' => $file]);
     }
 
     /**
@@ -130,7 +131,7 @@ class FileController extends Controller
         ]);
         $name = $request->file('file')->getClientOriginalName();
         $path = 'storage/myfiles/' . $name;
-        if ($request->file('file')->storeAs($this->root, $name)) {
+        if ($request->file('file')->storeAs(root(), $name)) {
             if ($request->has('watermark')) {
                 addWatermark($path);
             }

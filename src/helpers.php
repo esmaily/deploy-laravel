@@ -48,7 +48,7 @@ function fileInfo($file, $path, $key = 'name')
 
 }
 
- # shortcut replace file
+# shortcut replace file
 function rep($val, $search = '/', $replace = '\\')
 {
     return str_replace($search, $replace, $val);
@@ -117,19 +117,30 @@ function imageBy($sourceImg, $img)
             return true;
     }
 }
+
 # return file manager root folder
 function root()
 {
-    return config('filemanager.root').'/';
+    return config('filemanager.root') . '/';
 }
+
 # show alert flash message
-function flash ($title = 'عملیات موفق !', $message = 'عملیات با موفقیت انجام شد')
+function flash($title = 'عملیات موفق !', $message = 'عملیات با موفقیت انجام شد')
 {
-    $flash = app('FlashMessage');
+    $flash = app('Esmaily\FileManagerFlashMessage');
 
     if (func_num_args() == 0) {
         return $flash;
     }
 
     return $flash->info($title, $message);
+}
+
+function isShow($ext, $type)
+{
+
+    $imageExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+
+    $fileExtensions = ['txt', 'css', 'html', 'js', 'php', 'json'];
+    return $type == 'image' ? (in_array($ext, $imageExtensions) ? true : false) : ($type == 'file' ? (in_array($ext, $fileExtensions) ? true : false ):false);
 }

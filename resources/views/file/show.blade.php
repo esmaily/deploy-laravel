@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('fileManager::layouts')
 
 @section('content')
     <div id = "page-title">
-        <span class = "title">مشاهده تصویر - <a href = "{{ route('file.index') }}"> » بازگشت </a></span>
+        <span class = "title">مشاهده تصویر - <a href = "{{ route('fileManager.index') }}"> » بازگشت </a></span>
         <div style = "text-align: right; margin-top: 10px;">
         </div>
     </div>
     <div class = "imgeviewer">
-        <form action = "{{ route('file.addWaterMark') }}" method = "post" target = "_self">
+        <form action = "{{ route('fileManager.addWaterMark') }}" method = "post" target = "_self">
             @csrf
             @if(session()->has('message'))
                 <div class="alert text-center  alert-success">{{ session('message') }}</div>
