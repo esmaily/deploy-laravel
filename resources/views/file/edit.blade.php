@@ -1,24 +1,23 @@
 @extends('fileManager::layouts')
 
 @section('content')
-    <div id="page-title">
-        <span class="title">ویرایش{{last(explode('/',$file)) }}- <a href="{{ route('fileManager.index') }}"> » بازگشت </a></span>
-        <div style="text-align: right; margin-top: 10px;">
-        </div>
-    </div>
-    <div class="imgeviewer">
-        <form action="{{ route('fileManager.update') }}" method="post" target="_self">
-            @csrf
-            @method('PUT')
-            <input type = "hidden" name="file" value="{{ $file }}">
-            <div class="viewfooter">
-                <div>
-                    <textarea class="textarea" name="description">{{ $content }}</textarea>
-
+    <div class="card">
+        <h5 class="card-header text-right">ویرایش{{last(explode('/',$file)) }}</h5>
+        <div class="card-body">
+            <form action="{{ route('fileManager.update') }}" method="post" target="_self">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="file" value="{{ $file }}">
+                <div class="form-group" >
+                    <label for="fileContent" class="text-right">محتوای فایل</label>
+                    <textarea class="form-control" rows="14" name="description" id="fileContent">{{ $content }}</textarea>
                 </div>
-                <input type="submit" name="addwatermark" class="button2" value="ثبت تغییرات" />
-                <input type="reset" name="addwatermark" class="button2 btncancel" value="انصراف" />
+               <div class="form-row">
+                   <input type="submit"  class="btn btn-success" value="ثبت تغییرات"/>
+                   <input type="reset"  class="btn btn-warning ml-2" value="انصراف"/>
+               </div>
+            </form>
+        </div>
             </div>
-        </form>
-    </div>
-    @stop
+
+@stop
