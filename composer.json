@@ -1,24 +1,48 @@
 {
-    "name": "esmaily/file-manager",
-    "description": "Manage All File And Directory Power by Laravel",
-    "type":"Package",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "jaffar",
-            "email": "jaffar9898@gmail.com"
-        }
+  "name": "esmaily/file-manager",
+  "description": "Manage all file and directory power by laravel",
+  "type": "Laravel Package",
+  "keywords": [
+    "laravel",
+    "file manager"
+  ],
+  "home": "https://github.com/esmaily/file-manager",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1.1",
+    "illuminate/Filesystem": "^5.5",
+    "illuminate/view": "^5.5",
+    "illuminate/support": "~5.5",
+    "illuminate/routing": "^5.5",
+    "illuminate/http": "5.5"
+  },
+  "require-dev": {
+    "laravel/framework": ">=5.5.25",
+    "phpunit/phpunit": ">6.5"
+  },
+  "authors": [
+    {
+      "name": "jaffar",
+      "email": "jaffar9898@gmail.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
     ],
-    "autoload":{
-        "classmap":[
-
-        ],
-      "psr-4":{
-         "Esmaily\\FileManager":"src/"
-      },
-        "files":[
-          "src/Http/helpers.php"
-        ]
+    "psr-4": {
+      "Esmaily\\FileManager": "src/"
     },
-    "require": {}
+    "files": [
+      "src/Http/helpers.php"
+    ]
+  },
+  "require": {},
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Esmaily\\FileManager\\BlogServiceProvider"
+      ],
+      "aliases": {}
+    }
+  }
 }
