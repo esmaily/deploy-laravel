@@ -1,7 +1,7 @@
 {
   "name": "esmaily/file-manager",
   "description": "Manage all file and directory power by laravel",
-  "type": "Laravel Package",
+  "type":"package",
   "keywords": [
     "laravel",
     "file-manager"
@@ -30,7 +30,7 @@
     "classmap": [
     ],
     "psr-4": {
-      "Esmaily\\FileManager": "src/"
+      "Esmaily\\FileManager\\": "src/"
     },
     "files": [
       "src/Http/helpers.php"
