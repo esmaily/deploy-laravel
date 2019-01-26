@@ -127,12 +127,11 @@ function root()
 # show alert flash message
 function flash($title = 'عملیات موفق !', $message = 'عملیات با موفقیت انجام شد')
 {
-    $flash = app('Esmaily\FileManagerFlashMessage');
-
+//    $flash = app('Esmaily\FileManager\FlashMessage');
+    $flash = app('flashMessage');
     if (func_num_args() == 0) {
         return $flash;
     }
-
     return $flash->info($title, $message);
 }
 
@@ -142,5 +141,5 @@ function isShow($ext, $type)
     $imageExtensions = ['jpg', 'jpeg', 'gif', 'png'];
 
     $fileExtensions = ['txt', 'css', 'html', 'js', 'php', 'json'];
-    return $type == 'image' ? (in_array($ext, $imageExtensions) ? true : false) : ($type == 'file' ? (in_array($ext, $fileExtensions) ? true : false ):false);
+    return $type == 'image' ? (in_array($ext, $imageExtensions) ? true : false) : ($type == 'file' ? (in_array($ext, $fileExtensions) ? true : false) : false);
 }

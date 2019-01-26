@@ -15,6 +15,7 @@ class FlashMessage
      * @param $level
      * @param string $key
      */
+
     public function create($title, $message, $level, $key = 'notifications')
     {
         return session()->flash($key, [

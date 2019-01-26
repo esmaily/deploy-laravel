@@ -30,7 +30,7 @@ class FileController extends Controller
         $directories = base(Storage::directories($route), $route);
 //        return $directories;
         $files = base(Storage::files($route), $route);
-
+        flash('dd','ddd');
         return view('fileManager::file.index', ['directories' => $directories, 'files' => $files, 'path' => $path]);
     }
 
@@ -40,14 +40,16 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name'=>'required|string',
         ]);
-        $path = $request->input('path');
-        $path = $path == NULL ? root() . $request->name : root() . $path . '/' . $request->name;
-        Storage::put($path, '');
-        flash();
-        return back();
+//        $path = $request->input('path');
+//        $path = $path == NULL ? root() . $request->name : root() . $path . '/' . $request->name;
+//        Storage::put($path, '');
+        flash('عملیات با موفق','فایل با موفقیت انجام شد ');
+
+    return back();
     }
 
     /**
@@ -200,6 +202,7 @@ class FileController extends Controller
         $path = $path == NULL ? root() . $file : root() . "{$path}/{$file}";
         Storage::delete($path);
         flash()->success('عملیات موفق !','فایل با موفقیت ایجاد شد');
+
         return back();
     }
 

@@ -2,7 +2,6 @@
 
 namespace Esmaily\FileManager;
 
-use function foo\func;
 use Illuminate\Support\ServiceProvider;
 
 class FileManagerServiceProvider extends ServiceProvider
@@ -30,6 +29,10 @@ class FileManagerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../Config/filemanager.php' => config_path('filemanager.php'),
         ],'filemanager-config');
+
+        $this->app->bind('flashMessage',function(){
+            return new FlashMessage();
+        });
     }
 
     /**
@@ -41,6 +44,9 @@ class FileManagerServiceProvider extends ServiceProvider
     {
         //
         $this->mergeConfigFrom(__DIR__.'/../Config/filemanager.php','filemanager');
+//        $this->app->singleton(FlashMessage::class,function($app){
+//            return $app['flashMessage']=new FlashMessage();
+//        });
     }
     public function registerHelpers()
     {
